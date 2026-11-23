@@ -91,7 +91,7 @@ class HistoryViewModel @Inject constructor(
             val dayEnd = calendar.timeInMillis
 
             val dayLogs = logs.filter { it.fechaHora in dayStart..dayEnd }
-            val dayTotal = dayLogs.sumOf { it.cantidadMl }
+            val dayTotal = dayLogs.sumOf { it.hydratedMl }
             val dayName = dayFormat.format(Date(dayStart)).replaceFirstChar { it.uppercase() }
 
             summaries.add(

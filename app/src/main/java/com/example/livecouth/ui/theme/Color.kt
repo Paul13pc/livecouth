@@ -2,10 +2,14 @@ package com.example.livecouth.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val OceanBlue = Color(0xFF0F6F78)
+val OceanBlueDark = Color(0xFF0A535B)
+val Aqua = Color(0xFF62D4C6)
+val Seafoam = Color(0xFFDCF6F1)
+val Coral = Color(0xFFFF8A70)
+val Sand = Color(0xFFFFF7EA)
+val Ink = Color(0xFF16343A)
+val Slate = Color(0xFF5E767B)
+val PaleBlue = Color(0xFFF1F8F7)
+val Night = Color(0xFF09242A)
+val NightSurface = Color(0xFF12363C)

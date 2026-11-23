@@ -3,6 +3,7 @@ package com.example.livecouth.ui.water.components
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -98,12 +99,26 @@ fun WaterLogItem(
 
                     Spacer(modifier = Modifier.weight(1f))
 
-                    Text(
-                        text = "+${waterLog.cantidadMl} ml",
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
+                    Column(horizontalAlignment = Alignment.End) {
+                        Text(
+                            text = stringResource(
+                                id = R.string.water_log_amount,
+                                stringResource(id = waterLog.drinkType.labelResId),
+                                waterLog.cantidadMl,
+                            ),
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                        Text(
+                            text = stringResource(
+                                id = R.string.water_log_hydrated,
+                                waterLog.hydratedMl,
+                            ),
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
                 }
             }
         },

@@ -31,4 +31,26 @@ class AdaptiveReminderCalculatorTest {
         // At 14:00 (midday ~ 920 ml expected). Current ml = 1000 ml.
         assertFalse(AdaptiveReminderCalculator.shouldNotify(currentMl = 1000, goalMl = 2000, currentHour = 14, startHour = 8, endHour = 21))
     }
+
+    @Test
+    fun minutePrecisionRespectsTheActiveWindowAndExpectedProgress() {
+        assertTrue(
+            AdaptiveReminderCalculator.shouldNotifyAtMinute(
+                currentMl = 200,
+                goalMl = 2000,
+                currentMinute = 14 * 60 + 15,
+                startMinute = 8 * 60 + 30,
+                endMinute = 21 * 60 + 30,
+            ),
+        )
+        assertFalse(
+            AdaptiveReminderCalculator.shouldNotifyAtMinute(
+                currentMl = 0,
+                goalMl = 2000,
+                currentMinute = 21 * 60 + 30,
+                startMinute = 8 * 60 + 30,
+                endMinute = 21 * 60 + 30,
+            ),
+        )
+    }
 }

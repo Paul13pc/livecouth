@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1042621207073",
+    "project_id": "livecouth-62ffe",
+    "storage_bucket": "livecouth-62ffe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042621207073:android:cb84976fd60e9d071fc960",
+        "android_client_info": {
+          "package_name": "com.example.livecouth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042621207073-piib4aufukp1e07l8ubu50uf2ufdcd6i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.livecouth",
+            "certificate_hash": "21ebb48576e6c7915968303efe3c2d3cb4c75040"
+          }
+        },
+        {
+          "client_id": "1042621207073-qvmjtlbimkk0kc42u51rtid0tqje01v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClZJnR3YFzA5Hbx27AUDDFIrrD2b-Phvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042621207073-qvmjtlbimkk0kc42u51rtid0tqje01v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

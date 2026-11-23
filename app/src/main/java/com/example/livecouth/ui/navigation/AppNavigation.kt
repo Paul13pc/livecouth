@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -16,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.livecouth.domain.repository.UserPreferencesRepository
 import com.example.livecouth.ui.history.HistoryScreen
 import com.example.livecouth.ui.history.HistoryViewModel
+import com.example.livecouth.ui.auth.AuthViewModel
 import com.example.livecouth.ui.profile.ProfileScreen
 import com.example.livecouth.ui.profile.ProfileViewModel
 import com.example.livecouth.ui.water.WaterScreen
@@ -34,6 +36,7 @@ fun AppNavigation(
     navController: NavHostController = rememberNavController(),
 ) {
     val userProfileState by userPreferencesRepository.userProfile.collectAsState(initial = null)
+    val authViewModel: AuthViewModel = hiltViewModel()
 
     val profile = userProfileState
 
@@ -53,6 +56,17 @@ fun AppNavigation(
         Routes.ONBOARDING
     }
 
+    LaunchedEffect(profile.isOnboardingCompleted) {
+        if (
+            profile.isOnboardingCompleted &&
+            navController.currentDestination?.route == Routes.ONBOARDING
+        ) {
+            navController.navigate(Routes.WATER_TRACKER) {
+                popUpTo(Routes.ONBOARDING) { inclusive = true }
+            }
+        }
+    }
+
     NavHost(
         navController = navController,
         startDestination = startDestination,
@@ -61,6 +75,7 @@ fun AppNavigation(
             val profileViewModel: ProfileViewModel = hiltViewModel()
             ProfileScreen(
                 viewModel = profileViewModel,
+                authViewModel = authViewModel,
                 isOnboarding = true,
                 onProfileSaved = {
                     navController.navigate(Routes.WATER_TRACKER) {
@@ -87,6 +102,7 @@ fun AppNavigation(
             val profileViewModel: ProfileViewModel = hiltViewModel()
             ProfileScreen(
                 viewModel = profileViewModel,
+                authViewModel = authViewModel,
                 isOnboarding = false,
                 onNavigateBack = {
                     navController.popBackStack()

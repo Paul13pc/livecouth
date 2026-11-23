@@ -364,7 +364,11 @@ fun HistoryScreen(
                                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                                         )
                                         Text(
-                                            text = "+${log.cantidadMl} ml",
+                                            text = stringResource(
+                                                id = R.string.water_log_amount,
+                                                stringResource(id = log.drinkType.labelResId),
+                                                log.cantidadMl,
+                                            ),
                                             style = MaterialTheme.typography.bodyMedium,
                                             fontWeight = FontWeight.Bold,
                                             color = MaterialTheme.colorScheme.primary,

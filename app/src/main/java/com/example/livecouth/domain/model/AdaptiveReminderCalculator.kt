@@ -19,17 +19,34 @@ object AdaptiveReminderCalculator {
         startHour: Int = 8,
         endHour: Int = 21,
     ): Boolean {
-        // If outside active window, don't notify
-        if (currentHour < startHour || currentHour > endHour) return false
+        if (currentHour !in 0..23 || startHour !in 0..23 || endHour !in 0..23) return false
+        return shouldNotifyAtMinute(
+            currentMl = currentMl,
+            goalMl = goalMl,
+            currentMinute = currentHour * 60,
+            startMinute = startHour * 60,
+            endMinute = endHour * 60,
+        )
+    }
+
+    fun shouldNotifyAtMinute(
+        currentMl: Int,
+        goalMl: Int,
+        currentMinute: Int,
+        startMinute: Int,
+        endMinute: Int,
+    ): Boolean {
+        if (startMinute !in 0 until 24 * 60 ||
+            endMinute !in 0 until 24 * 60 ||
+            currentMinute !in startMinute until endMinute
+        ) return false
 
         // If goal already reached or exceeded, don't notify
-        if (currentMl >= goalMl) return false
+        if (goalMl <= 0 || currentMl >= goalMl) return false
 
-        val totalActiveHours = (endHour - startHour).coerceAtLeast(1)
-        val elapsedActiveHours = (currentHour - startHour).coerceIn(0, totalActiveHours)
-
-        // Expected progress ratio at this time of day
-        val expectedRatio = elapsedActiveHours.toFloat() / totalActiveHours.toFloat()
+        val totalActiveMinutes = endMinute - startMinute
+        val elapsedActiveMinutes = currentMinute - startMinute
+        val expectedRatio = elapsedActiveMinutes.toFloat() / totalActiveMinutes.toFloat()
         val expectedMl = goalMl * expectedRatio
 
         // Notify if user is behind schedule by at least 100 ml margin

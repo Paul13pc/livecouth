@@ -1,8 +1,29 @@
 <resources>
-    <string name="app_name">livecouth</string>
+    <string name="app_name">LiveCouth</string>
     <string name="water_tracker_title">Seguimiento de Agua</string>
     <string name="daily_goal">Meta diaria: %1$d ml</string>
     <string name="current_progress">%1$d / %2$d ml</string>
+    <string name="home_progress_title">Tu progreso de hoy</string>
+    <string name="home_progress_summary">%1$d / %2$d ml · %3$d%%</string>
+    <string name="home_current_value">%1$d ml</string>
+    <string name="home_percent">%1$d%%</string>
+    <string name="home_weather_title">Clima en %1$s</string>
+    <string name="home_weather_loading">Consultando el pronóstico del día…</string>
+    <string name="home_weather_unavailable">Sin conexión: elige el clima de hoy para ajustar tu meta.</string>
+    <string name="home_weather_cached">Último dato guardado de %1$s · %2$s</string>
+    <string name="home_weather_values">Máxima %1$.1f °C · Humedad %2$d%%</string>
+    <string name="home_weather_summary">Clima en %1$s · Máx %2$.0f °C · Humedad %3$d%%</string>
+    <string name="home_weather_toggle">Mostrar u ocultar detalles del clima</string>
+    <string name="water_logs_toggle">Expandir o contraer los registros de hoy</string>
+    <string name="today_logs_count">Registros de hoy · %1$d</string>
+    <string name="water_goal_congratulations">¡Meta alcanzada! ¡Excelente trabajo hoy!</string>
+    <string name="home_goal_breakdown">Base %1$d + clima %2$d = %3$d ml</string>
+    <string name="home_goal_remaining">%1$d ml para alcanzar tu meta</string>
+    <string name="home_goal_reached">¡Meta diaria alcanzada! Sigue escuchando a tu cuerpo.</string>
+    <string name="manual_weather_title">Hoy hace:</string>
+    <string name="manual_weather_temperate">Templado</string>
+    <string name="manual_weather_hot">Calor</string>
+    <string name="manual_weather_very_hot">Mucho calor</string>
     <string name="add_150">+150 ml</string>
     <string name="add_250">+250 ml</string>
     <string name="add_500">+500 ml</string>
@@ -11,14 +32,54 @@
     <string name="custom_dialog_label">Cantidad en ml</string>
     <string name="custom_dialog_add">Añadir</string>
     <string name="custom_dialog_cancel">Cancelar</string>
+    <string name="custom_dialog_invalid">Introduce una cantidad y un factor válidos.</string>
+    <string name="validation_name_required">Escribe un nombre.</string>
+    <string name="validation_name_too_long">El nombre no puede superar los 30 caracteres.</string>
+    <string name="validation_age_required">Escribe tu edad.</string>
+    <string name="validation_age_integer">La edad debe ser un número entero.</string>
+    <string name="validation_age_range">La edad debe estar entre 5 y 120 años.</string>
+    <string name="validation_weight_required">Escribe tu peso.</string>
+    <string name="validation_weight_format">Usa un número con hasta un decimal (coma o punto).</string>
+    <string name="validation_weight_range">El peso debe estar entre 20 y 300 kg.</string>
+    <string name="validation_water_required">Escribe una cantidad de agua.</string>
+    <string name="validation_water_integer">La cantidad debe ser un número entero de mililitros.</string>
+    <string name="validation_water_range">La cantidad debe estar entre 10 y 3000 ml.</string>
+    <string name="water_total_warning">Ese consumo es muy alto, verifica que sea correcto</string>
+    <string name="drink_type_label">Tipo de bebida</string>
+    <string name="hydration_factor">Factor de hidratación</string>
+    <string name="hydration_factor_hint">De 0 a 2 (editable)</string>
+    <string name="drink_type_water">Agua</string>
+    <string name="drink_type_tea">Té</string>
+    <string name="drink_type_juice">Jugo</string>
+    <string name="drink_type_coffee">Café</string>
+    <string name="drink_type_other">Otra</string>
+    <string name="water_log_amount">%1$s · %2$d ml</string>
+    <string name="water_log_hydrated">Aporta %1$d ml al progreso</string>
+    <string name="quick_buttons_manage">Editar botones</string>
+    <string name="quick_buttons_title">Botones rápidos</string>
+    <string name="quick_button_add">Añadir botón</string>
+    <string name="quick_button_edit">Editar botón</string>
+    <string name="quick_button_name">Nombre del botón</string>
+    <string name="quick_button_amount">Cantidad en ml</string>
+    <string name="quick_button_display_amount">%1$d ml</string>
+    <string name="quick_button_empty">Todavía no hay botones rápidos.</string>
+    <string name="quick_button_invalid">Escribe un nombre y una cantidad válida.</string>
+    <string name="quick_button_move_up">Mover hacia arriba</string>
+    <string name="quick_button_move_down">Mover hacia abajo</string>
+    <string name="quick_button_delete">Eliminar botón</string>
+    <string name="quick_button_save">Guardar botón</string>
     <string name="today_logs_title">Registros de hoy</string>
-    <string name="empty_logs">Aún no has registrado agua hoy. ¡Dale de beber a tu tiburón!</string>
+    <string name="empty_logs">Aún no has registrado agua hoy. Tu tiburón necesita hidratación.</string>
     <string name="delete_log">Eliminar registro</string>
-    <string name="shark_stranded">¡Gasp! Un poquito de agua por favor… ¡Tierra a la vista!</string>
-    <string name="shark_recovering">Siento las aletas activándose. ¡Sigue así!</string>
-    <string name="shark_swimming">¡A toda vela! Nadando como pez en el agua.</string>
-    <string name="shark_happy">¡Casi en la meta! Un tiburón muy feliz y lleno de energía.</string>
-    <string name="shark_celebrating">¡Meta de agua al 100%! ¡Fiesta bajo el mar!</string>
+    <string name="shark_stranded">Nivel bajo. Bebe agua para volver a activar a tu tiburón.</string>
+    <string name="shark_recovering">El tiburón recupera velocidad. Continúa con tu objetivo.</string>
+    <string name="shark_swimming">Hidratación estable. Tu tiburón está en movimiento.</string>
+    <string name="shark_happy">Casi alcanzas tu meta diaria de agua.</string>
+    <string name="shark_celebrating">Meta de agua alcanzada al 100%.</string>
+    <string name="shark_expression_thirsty">Sediento</string>
+    <string name="shark_expression_normal">Normal</string>
+    <string name="shark_expression_happy">Feliz</string>
+    <string name="water_scene_preview_progress">Progreso de la escena: %1$d%%</string>
     <string name="onboarding_title">¡Bienvenido a Livecouth!</string>
     <string name="onboarding_subtitle">Configura tu perfil para calcular tu meta diaria de agua e iniciar el hábitat de tu tiburón.</string>
     <string name="profile_title">Tu Perfil</string>
@@ -26,18 +87,136 @@
     <string name="profile_weight">Peso (kg)</string>
     <string name="profile_age">Edad</string>
     <string name="profile_activity">Nivel de actividad física</string>
+    <string name="profile_city">Ciudad del clima</string>
+    <string name="climate_location_mode_title">Clima por</string>
+    <string name="climate_location_mode_description">Elige cómo adaptar tu meta a la temperatura.</string>
+    <string name="climate_location_device">Mi ubicación</string>
+    <string name="climate_location_manual">Ciudad manual</string>
+    <string name="climate_location_loading">Buscando una ubicación aproximada…</string>
+    <string name="climate_location_consent_title">Usar mi ubicación</string>
+    <string name="climate_location_consent_message">Usaremos tu ubicación aproximada para consultar el pronóstico en Open-Meteo y ajustar tu meta. Open-Meteo recibe las coordenadas necesarias para responder; se guardan solo en este dispositivo y no se sincronizan con tu cuenta.</string>
+    <string name="climate_location_consent_continue">Continuar</string>
+    <string name="climate_location_notice_title">Ajuste de clima</string>
+    <string name="climate_location_understood">Entendido</string>
+    <string name="climate_location_open_settings">Abrir ajustes</string>
+    <string name="climate_location_manual_fallback">Seguir con ciudad manual</string>
+    <string name="climate_location_permission_denied">No pasa nada. Usaremos la ciudad manual; puedes probar la ubicación cuando quieras.</string>
+    <string name="climate_location_permission_permanently_denied">El permiso está desactivado. Puedes activarlo en los ajustes de la app o seguir con una ciudad manual.</string>
+    <string name="climate_location_disabled_last_used">La ubicación del dispositivo está desactivada. Usaremos la última ubicación guardada.</string>
+    <string name="climate_location_disabled_manual">La ubicación del dispositivo está desactivada y no hay una ubicación guardada. Puedes elegir una ciudad manual.</string>
+    <string name="climate_location_last_known_used">No pudimos obtener una ubicación actual. Usaremos la última ubicación guardada.</string>
+    <string name="climate_location_unavailable">No encontramos una ubicación actual ni guardada. Puedes continuar con una ciudad manual.</string>
+    <string name="climate_location_storage_error">No pudimos guardar la preferencia de ubicación. La ciudad manual sigue disponible.</string>
+    <string name="climate_location_city_fallback">Tu ubicación aproximada</string>
+    <string name="city_name">Ciudad</string>
+    <string name="city_latitude">Latitud</string>
+    <string name="city_longitude">Longitud</string>
+    <string name="city_coordinates_error">Escribe una ciudad y coordenadas válidas (latitud −90 a 90, longitud −180 a 180).</string>
+    <string name="city_manta">Manta, Ecuador</string>
+    <string name="city_quito">Quito, Ecuador</string>
+    <string name="city_guayaquil">Guayaquil, Ecuador</string>
+    <string name="city_cuenca">Cuenca, Ecuador</string>
+    <string name="back">Atrás</string>
     <string name="activity_low">Bajo</string>
     <string name="activity_medium">Medio (+300 ml)</string>
     <string name="activity_high">Alto (+600 ml)</string>
-    <string name="calculated_goal_preview">Meta diaria calculada: %1$d ml</string>
+    <string name="calculated_goal_preview">Meta base diaria: %1$d ml</string>
     <string name="btn_save_onboarding">Comenzar aventura</string>
     <string name="btn_save_profile">Guardar cambios</string>
     <string name="profile_icon_desc">Perfil de usuario</string>
+    <string name="account_backup_title">Cuenta y respaldo</string>
+    <string name="account_backup_description">Inicia sesión con Google para activar el respaldo en la nube. La app sigue funcionando sin una cuenta.</string>
+    <string name="account_google">Cuenta de Google</string>
+    <string name="auth_sign_in_google">Continuar con Google</string>
+    <string name="auth_signing_in">Conectando…</string>
+    <string name="auth_signed_in_as">Sesión iniciada como %1$s</string>
+    <string name="auth_configuration_missing">Falta el ID de cliente web de Google. Configura GOOGLE_WEB_CLIENT_ID en gradle.properties y vuelve a compilar.</string>
+    <string name="auth_configuration_error">No se pudo validar la configuración de Google. Comprueba el ID de cliente web, el SHA-1 de esta app y que Google esté habilitado en Firebase.</string>
+    <string name="auth_fast_cancel_configuration">Posible error de configuración (SHA-1 o Web Client ID).</string>
+    <string name="auth_no_google_account">No se encontró una cuenta de Google en el dispositivo. Añade una cuenta en Ajustes o inténtalo con otra.</string>
+    <string name="auth_user_cancelled">Cancelaste el inicio de sesión. Puedes intentarlo de nuevo cuando quieras.</string>
+    <string name="auth_credential_error">No se pudo completar el acceso con Google. Inténtalo de nuevo.</string>
+    <string name="auth_network_error">No hay conexión a internet. Conéctate e inténtalo de nuevo.</string>
+    <string name="auth_firebase_error">Firebase no pudo iniciar sesión. Revisa que Google esté habilitado en Firebase Authentication.</string>
+    <string name="auth_unknown_error">Ocurrió un error inesperado al iniciar sesión. Inténtalo de nuevo.</string>
+    <string name="auth_sync_now">Sincronizar ahora</string>
+    <string name="auth_syncing">Sincronizando datos…</string>
+    <string name="auth_restoring">Restaurando tus datos…</string>
+    <string name="auth_never_synced">Aún no se ha sincronizado</string>
+    <string name="auth_last_sync">Última sincronización: %1$s</string>
+    <string name="auth_sign_out">Cerrar sesión</string>
+    <string name="auth_sign_out_title">Cerrar sesión</string>
+    <string name="auth_sign_out_message">¿Qué quieres hacer con los datos guardados en este teléfono?</string>
+    <string name="auth_keep_local_data">Conservar datos</string>
+    <string name="auth_delete_local_data">Borrar datos</string>
+    <string name="auth_local_data_error">No se pudieron borrar todos los datos locales. La sesión sigue activa.</string>
+    <string name="auth_permission_error">Firebase denegó el acceso. Revisa las reglas de seguridad de Firestore.</string>
+    <string name="auth_sync_error">No se pudo completar la sincronización. Inténtalo de nuevo.</string>
+    <string name="auth_sync_in_progress">Espera a que termine la sincronización antes de cerrar sesión.</string>
+    <string name="auth_session_expired">Tu sesión venció. Inicia sesión con Google para volver a sincronizar.</string>
     <string name="reminder_settings_title">Recordatorios de Agua</string>
-    <string name="reminder_enable_switch">Activar recordatorios (cada 2h)</string>
+    <string name="reminder_enable_switch">Activar recordatorios</string>
     <string name="reminder_start_hour">Hora de inicio (08:00)</string>
     <string name="reminder_end_hour">Hora de fin (21:00)</string>
+    <string name="reminder_start_hour_value">Hora de inicio: %1$d:00</string>
+    <string name="reminder_end_hour_value">Hora de fin: %1$d:00</string>
     <string name="test_notification_btn">⚡ Probar notificación ahora</string>
+    <string name="reminder_start_time">Hora de inicio</string>
+    <string name="reminder_end_time">Hora de fin</string>
+    <string name="reminder_frequency_label">Frecuencia</string>
+    <string name="reminder_frequency_30_minutes">Cada 30 min</string>
+    <string name="reminder_frequency_1_hour">Cada 1 h</string>
+    <string name="reminder_frequency_90_minutes">Cada 1 h 30 min</string>
+    <string name="reminder_frequency_2_hours">Cada 2 h</string>
+    <string name="reminder_frequency_3_hours">Cada 3 h</string>
+    <string name="reminder_frequency_custom">Personalizado</string>
+    <string name="reminder_custom_interval">Minutos (mínimo 30)</string>
+    <string name="reminder_interval_minimum">El intervalo personalizado debe ser de al menos 30 minutos.</string>
+    <string name="reminder_invalid_window">La hora de fin debe ser posterior a la hora de inicio.</string>
+    <string name="reminder_active_days">Días activos</string>
+    <string name="reminder_day_monday">L</string>
+    <string name="reminder_day_tuesday">M</string>
+    <string name="reminder_day_wednesday">X</string>
+    <string name="reminder_day_thursday">J</string>
+    <string name="reminder_day_friday">V</string>
+    <string name="reminder_day_saturday">S</string>
+    <string name="reminder_day_sunday">D</string>
+    <string name="reminder_quiet_hours">No molestar</string>
+    <string name="reminder_quiet_start">Desde</string>
+    <string name="reminder_quiet_end">Hasta</string>
+    <string name="reminder_invalid_quiet_window">El horario de no molestar debe tener horas de inicio y fin distintas.</string>
+    <string name="notification_channel_name">Recordatorios de agua</string>
+    <string name="notification_channel_description">Avisos amistosos para acompañar tu hidratación.</string>
+    <string name="notification_title_low">Un saludo desde el arrecife</string>
+    <string name="notification_title_medium">La marea va contigo</string>
+    <string name="notification_title_near_goal">¡Ya casi llegamos!</string>
+    <string name="notification_progress">Llevas %1$d de %2$d ml (%3$d%%)</string>
+    <string name="notification_goal_title">¡Meta alcanzada! 🦈</string>
+    <string name="notification_goal_text">Llevas %1$d de %2$d ml (100%%). ¡A disfrutar la marea!</string>
+    <string name="notification_action_add_250">+250 ml</string>
+    <string name="notification_action_my_bottle">+ Mi botella</string>
+    <string name="notification_action_later">Más tarde</string>
+    <string-array name="reminder_messages_low">
+        <item>¡Estoy sintiendo arena en las branquias! 🦈</item>
+        <item>Mi ola favorita es la que viene con un sorbito.</item>
+        <item>La pecera pregunta por tu próximo vasito.</item>
+        <item>Un traguito y seguimos nadando.</item>
+        <item>Al tiburón le vendría bien una pequeña ola.</item>
+    </string-array>
+    <string-array name="reminder_messages_medium">
+        <item>Ya vamos haciendo olitas; ¿sumamos un vaso?</item>
+        <item>Mi brújula apunta al vaso más cercano.</item>
+        <item>El arrecife celebra cada sorbito.</item>
+        <item>Un poco de agua y seguimos explorando.</item>
+        <item>¡Buen ritmo! La marea va contigo.</item>
+    </string-array>
+    <string-array name="reminder_messages_near_goal">
+        <item>¡La meta ya se ve desde aquí!</item>
+        <item>Estamos a pocos sorbos de la costa.</item>
+        <item>El tiburón da una vuelta de celebración.</item>
+        <item>¡Casi llegamos! Un último chapuzón si te apetece.</item>
+        <item>La ola final está cerca, sin apuro.</item>
+    </string-array>
     <string name="history_title">Historial y Estadísticas</string>
     <string name="weekly_average_label">Promedio Semanal</string>
     <string name="weekly_average_val">%1$d ml/día</string>

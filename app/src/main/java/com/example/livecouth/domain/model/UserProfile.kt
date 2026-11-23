@@ -9,6 +9,7 @@ data class UserProfile(
     val reminderEnabled: Boolean = true,
     val reminderStartHour: Int = 8,
     val reminderEndHour: Int = 21,
+    val city: CityLocation = CityLocation.MANTA,
 ) {
     val dailyGoalMl: Int
         get() = WaterGoalCalculator.calculateGoalMl(weightKg, activityLevel)

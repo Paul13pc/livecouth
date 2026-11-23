@@ -1,0 +1,100 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function ownsUser(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    function validSyncMetadata(data, documentId) {
+      return data.syncId == documentId
+        && data.updatedAt is int
+        && data.updatedAt >= 0
+        && data.sincronizado == true
+        && data.eliminado is bool;
+    }
+
+    match /users/{userId}/profile/{profileId} {
+      allow read: if ownsUser(userId) && profileId == 'current';
+      allow create, update: if ownsUser(userId)
+        && profileId == 'current'
+        && request.resource.data.keys().hasOnly([
+          'name', 'weightKg', 'age', 'activityLevel',
+          'isOnboardingCompleted', 'reminderEnabled',
+          'reminderStartHour', 'reminderEndHour',
+          'cityName',
+          'updatedAt', 'sincronizado', 'eliminado'
+        ])
+        && request.resource.data.keys().hasAll([
+          'name', 'weightKg', 'age', 'activityLevel',
+          'isOnboardingCompleted', 'reminderEnabled',
+          'reminderStartHour', 'reminderEndHour',
+          'cityName',
+          'updatedAt', 'sincronizado', 'eliminado'
+        ])
+        && request.resource.data.name is string
+        && request.resource.data.weightKg is number
+        && request.resource.data.weightKg > 0
+        && request.resource.data.age is int
+        && request.resource.data.age > 0
+        && request.resource.data.activityLevel in ['BAJO', 'MEDIO', 'ALTO']
+        && request.resource.data.isOnboardingCompleted is bool
+        && request.resource.data.reminderEnabled is bool
+        && request.resource.data.reminderStartHour is int
+        && request.resource.data.reminderStartHour >= 0
+        && request.resource.data.reminderStartHour <= 23
+        && request.resource.data.reminderEndHour is int
+        && request.resource.data.reminderEndHour >= 0
+        && request.resource.data.reminderEndHour <= 23
+        && request.resource.data.cityName is string
+        && request.resource.data.updatedAt is int
+        && request.resource.data.updatedAt >= 0
+        && request.resource.data.sincronizado == true
+        && request.resource.data.eliminado is bool;
+      allow delete: if false;
+    }
+
+    match /users/{userId}/waterLogs/{logId} {
+      allow read: if ownsUser(userId);
+      allow create, update: if ownsUser(userId)
+        && request.resource.data.keys().hasOnly([
+          'syncId', 'cantidadMl', 'fechaHora', 'drinkType',
+          'hydrationFactor', 'updatedAt', 'sincronizado', 'eliminado'
+        ])
+        && request.resource.data.keys().hasAll([
+          'syncId', 'cantidadMl', 'fechaHora', 'drinkType',
+          'hydrationFactor', 'updatedAt', 'sincronizado', 'eliminado'
+        ])
+        && validSyncMetadata(request.resource.data, logId)
+        && request.resource.data.cantidadMl is int
+        && request.resource.data.cantidadMl > 0
+        && request.resource.data.fechaHora is int
+        && request.resource.data.drinkType in ['WATER', 'TEA', 'JUICE', 'COFFEE', 'OTHER']
+        && request.resource.data.hydrationFactor is number
+        && request.resource.data.hydrationFactor >= 0
+        && request.resource.data.hydrationFactor <= 2;
+      allow delete: if false;
+    }
+
+    match /users/{userId}/quickButtons/{buttonId} {
+      allow read: if ownsUser(userId);
+      allow create, update: if ownsUser(userId)
+        && request.resource.data.keys().hasOnly([
+          'syncId', 'name', 'amountMl', 'sortOrder',
+          'updatedAt', 'sincronizado', 'eliminado'
+        ])
+        && request.resource.data.keys().hasAll([
+          'syncId', 'name', 'amountMl', 'sortOrder',
+          'updatedAt', 'sincronizado', 'eliminado'
+        ])
+        && validSyncMetadata(request.resource.data, buttonId)
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.amountMl is int
+        && request.resource.data.amountMl > 0
+        && request.resource.data.sortOrder is int
+        && request.resource.data.sortOrder >= 0;
+      allow delete: if false;
+    }
+  }
+}

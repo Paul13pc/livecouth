@@ -6,38 +6,29 @@ import org.junit.Test
 class SharkStateTest {
 
     @Test
-    fun `calculateState returns STRANDED when progress is under 20 percent`() {
-        assertEquals(SharkState.STRANDED, SharkState.calculateState(0, 2000))
-        assertEquals(SharkState.STRANDED, SharkState.calculateState(399, 2000))
+    fun `percentage selects thirsty below 30 percent`() {
+        assertEquals(SharkState.THIRSTY, SharkState.calculateStateFromPercentage(0f))
+        assertEquals(SharkState.THIRSTY, SharkState.calculateStateFromPercentage(0.299f))
     }
 
     @Test
-    fun `calculateState returns RECOVERING when progress is between 20 and 50 percent`() {
-        assertEquals(SharkState.RECOVERING, SharkState.calculateState(400, 2000))
-        assertEquals(SharkState.RECOVERING, SharkState.calculateState(999, 2000))
+    fun `percentage selects jumping from 30 to under 70 percent`() {
+        assertEquals(SharkState.JUMPING, SharkState.calculateStateFromPercentage(0.30f))
+        assertEquals(SharkState.JUMPING, SharkState.calculateStateFromPercentage(0.699f))
     }
 
     @Test
-    fun `calculateState returns SWIMMING when progress is between 50 and 80 percent`() {
-        assertEquals(SharkState.SWIMMING, SharkState.calculateState(1000, 2000))
-        assertEquals(SharkState.SWIMMING, SharkState.calculateState(1599, 2000))
+    fun `percentage selects free swimming from 70 percent including excess`() {
+        assertEquals(SharkState.FREE_SWIMMING, SharkState.calculateStateFromPercentage(0.70f))
+        assertEquals(SharkState.FREE_SWIMMING, SharkState.calculateStateFromPercentage(1f))
+        assertEquals(SharkState.FREE_SWIMMING, SharkState.calculateStateFromPercentage(1.5f))
     }
 
     @Test
-    fun `calculateState returns HAPPY when progress is between 80 and 100 percent`() {
-        assertEquals(SharkState.HAPPY, SharkState.calculateState(1600, 2000))
-        assertEquals(SharkState.HAPPY, SharkState.calculateState(1999, 2000))
-    }
-
-    @Test
-    fun `calculateState returns CELEBRATING when progress is 100 percent or more`() {
-        assertEquals(SharkState.CELEBRATING, SharkState.calculateState(2000, 2000))
-        assertEquals(SharkState.CELEBRATING, SharkState.calculateState(3000, 2000))
-    }
-
-    @Test
-    fun `calculateState handles zero or negative goal gracefully`() {
-        assertEquals(SharkState.STRANDED, SharkState.calculateState(500, 0))
-        assertEquals(SharkState.STRANDED, SharkState.calculateState(500, -100))
+    fun `calculateState uses goal percentage and handles invalid goals`() {
+        assertEquals(SharkState.THIRSTY, SharkState.calculateState(500, 0))
+        assertEquals(SharkState.THIRSTY, SharkState.calculateState(500, -100))
+        assertEquals(SharkState.JUMPING, SharkState.calculateState(600, 2000))
+        assertEquals(SharkState.FREE_SWIMMING, SharkState.calculateState(2000, 2000))
     }
 }
